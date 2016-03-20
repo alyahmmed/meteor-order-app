@@ -1,0 +1,36 @@
+<template name="restaurants">
+  <div class="container-fluid">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="alert alert-info user-access" style="display: none;">
+        <strong>Please login first!</strong>
+      </div>
+      {{#if rests}}
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Restaurant</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each rest in rests}}
+          <tr>
+            <td>{{ rest.name }}</td>
+            <td>{{ rest.phone }}</td>
+            <td>{{ rest.address }}</td>
+            <td>
+              <a href="/restaurants/{{ rest._id }}/edit" class="btn btn-primary edit-rest" data-id="{{ rest._id }}">Edit</a>
+              <button class="btn btn-danger remove-rest" data-id="{{ rest._id }}">Delete</button>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <hr>
+      <a href="/restaurants/new" class="btn btn-primary new-rest">New restaurant</a>
+      {{/if}}
+    </div>
+  </div>
+</template>

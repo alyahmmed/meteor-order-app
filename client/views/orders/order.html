@@ -1,0 +1,30 @@
+<template name="order">
+  <div class="container-fluid">
+    <div class="col-md-8 col-md-offset-2">
+      {{#if currentUser }}
+        <div class="alert alert-info data-required" style="display: none;">
+          <strong>All fields are required!</strong>
+        </div>
+        <h3>Make order</h3>
+        <form id="FormOrder">
+          <fieldset class="form-group">
+            <label for="InputRestId">Restaurant</label>
+            <select class="form-control" id="InputRestId">
+              <option value="0">Please select</option>
+              {{#each rest in rests}}
+              <option value="{{ rest._id }}">{{ rest.name }}</option>
+              {{/each}}
+            </select>
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="InputDetails">Order details</label>
+            <textarea class="form-control" id="InputDetails" rows="3"></textarea>
+          </fieldset>
+          <button type="submit" class="btn btn-primary submit-order">Submit</button>
+        </form>
+      {{else}}
+        <h3>Please login first!</h3>
+      {{/if}}
+    </div>
+  </div>
+</template>

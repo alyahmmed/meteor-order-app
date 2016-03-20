@@ -1,0 +1,29 @@
+<template name="orders">
+  <div class="container-fluid">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="alert alert-info user-access" style="display: none;">
+        <strong>Please login first!</strong>
+      </div>
+      {{#if orders}}
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Restaurant</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each order in orders}}
+          <tr>
+            <td>{{ order.user.name }}</td>
+            <td>{{ order.restaurant.name }}</td>
+            <td>{{ order.details }}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      {{/if}}
+    </div>
+  </div>
+</template>
